@@ -1,3 +1,0 @@
-/Users/omeramin/cpp/Movie++/build/CMakeFiles/program.dir
-/Users/omeramin/cpp/Movie++/build/CMakeFiles/edit_cache.dir
-/Users/omeramin/cpp/Movie++/build/CMakeFiles/rebuild_cache.dir
