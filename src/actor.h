@@ -1,7 +1,6 @@
 #pragma once
 
 #include "action.h"
-#include "algebra.h"
 #include "camera.h"
 #include "vec2.h"
 #include <vector>

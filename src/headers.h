@@ -6,7 +6,6 @@
 #include "camera.h"
 #include "movie.h"
 #include "action.h"
-#include "algebra.h"
 #include "easing.h"
 #include "scene.h"
 #include "director.h"
