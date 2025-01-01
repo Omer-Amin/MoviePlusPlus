@@ -26,13 +26,18 @@ struct Movie
     int completedCycles = 0;
     int cycles = 1;
 
+    float playSpeed = 1.0f;
+
     std::vector<std::vector<Scene>> scenes;
     std::function<void(Movie&)> frame;
 
     float accumulatedTime = 0.0f;
     Uint32 previousTime = SDL_GetTicks();
 
-    Movie(Camera camera, unsigned int fps) : camera(camera), fps(fps), timestep(1000.0f / fps) {}
+    Movie(Camera camera, unsigned int fps) : camera(camera), fps(fps)
+    {
+    	timestep = 1000.0f / (static_cast<float>(fps) * playSpeed);
+    }
 
     std::function<void(Movie&)> renderMethod = [&](Movie& movie) {
         camera.clear(M_BLACK);

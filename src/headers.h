@@ -11,6 +11,7 @@
 #include "scene.h"
 #include "director.h"
 #include "writer.h"
+#include "costume.h"
 
 #include <SDL2/SDL.h>
 #include <vector>

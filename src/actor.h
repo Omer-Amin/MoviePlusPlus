@@ -13,16 +13,25 @@ struct Actor
 {
     std::vector<Vec2> vertices;
     std::vector<Vec2> localVertices;
+    size_t vertNum;
+    
     Vec2 position;
+    
     Vec2 angle = { 0, 0 };
     Vec2 scale = { 1, 1 };
-    size_t vertNum;
+
+	RGBA strokeColor = M_WHITE;
+	RGBA fillColor = M_CLEAR;
+
     Script script;
 
     std::function<void(Actor&, Camera&)> renderMethod = [&](Actor& actor, Camera& camera) {
         if (vertNum > 1)
         {
-            camera.setColor(M_WHITE);
+            camera.setColor(fillColor);
+            camera.polyFill(actor.vertices);
+
+            camera.setColor(strokeColor);
             camera.poly(actor.vertices);
         }
     };

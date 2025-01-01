@@ -9,15 +9,14 @@ int main()
     // Create an animation handler, set FPS to 60
     Movie movie(camera, 60);
 
-    // Create an actor with a square appearance
-    Actor square({ {100, 100}, {200, 100}, {200, 200}, {100, 200} });
-    square.setPosition({ camera.WIDTH / 2.0f, camera.HEIGHT / 2.0f });
+    // Create an actor with a square appearance at the center of the window
+    Actor square(Costume::rectangle(camera.WIDTH / 2.0f, camera.HEIGHT / 2.0f, 100, 100));
 
     // Create an actor with a triangle appearance and move to square's position
     Actor tri({ {300, 250}, {350, 350}, {250, 350} });
     tri.setPosition(square.position);
 
-    // Create an actor with some arbitrary shape (sketch)
+    // Create an actor with some arbitrary shape (sketch) and move to square's position
     Actor sketch({
         {122, 202}, {122, 202}, {116, 202}, {107, 199},
         {99, 189},  {102, 187}, {96, 179},  {85, 166},
