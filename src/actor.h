@@ -23,14 +23,16 @@ struct Actor
 	RGBA fillColor = M_CLEAR;
 
     Script script;
+    
+    std::function<void(Actor&)> afterTick = [&](Actor& actor) {};
 
     std::function<void(Actor&, Camera&)> renderMethod = [&](Actor& actor, Camera& camera) {
         if (vertNum > 1)
         {
-            camera.setColor(fillColor);
+            camera.setColor(actor.fillColor);
             camera.polyFill(actor.vertices);
 
-            camera.setColor(strokeColor);
+            camera.setColor(actor.strokeColor);
             camera.poly(actor.vertices);
         }
     };
@@ -53,7 +55,7 @@ struct Actor
         }
     }
 
-    void read(Script acts)
+    void prepare(Script acts)
     {
         for (auto& actions : acts)
         {
@@ -73,7 +75,6 @@ struct Actor
             vertex = vertex + deltaPosition;
     }
     
-    void afterTick(Actor&);
     
     Actor reverse()
     {

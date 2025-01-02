@@ -15,17 +15,17 @@ struct Camera
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
 
-    float WIDTH;
-    float HEIGHT;
+    const float WIDTH;
+    const float HEIGHT;
 
     Vec2 offset = { 0.0f, 0.0f };
     Vec2 scale = { 1.0f, 1.0f };
-    Vec2 origin = { 0.0f, 0.0f };
+    Vec2 scaleOrigin = { 0.0f, 0.0f };
 
-    Camera(int w, int h)
+    Camera(int w, int h) :
+    	WIDTH(static_cast<float>(w)),
+    	HEIGHT(static_cast<float>(h))
     {
-    	WIDTH = static_cast<float>(w);
-    	HEIGHT = static_cast<float>(h);
         SDL_Init(SDL_INIT_EVERYTHING);
         SDL_CreateWindowAndRenderer(w, h, 0, &window, &renderer);
     }
@@ -46,7 +46,7 @@ struct Camera
         SDL_SetRenderDrawColor(renderer, rgba[0], rgba[1], rgba[2], rgba[3]);
     }
 
-    inline void poly(std::vector<Vec2>& vertices, bool close = true)
+    inline void poly(const std::vector<Vec2>& vertices, bool close = true)
     {
         size_t sizeLess1 = vertices.size() - 1;
         for (int i = 0; i < sizeLess1; i++)
