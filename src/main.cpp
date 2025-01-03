@@ -7,7 +7,7 @@ int main()
     // Create an SDL2 renderer and window with dimension 500x500
     Camera camera(400, 225);
     // Create an animation handler, set FPS to 60
-    Movie movie(camera, 60);
+    Movie movie(camera, 120);
 
     // Create an actor with a square appearance at the center of the window
     Actor square(Costume::rectangle(camera.WIDTH / 2.0f, camera.HEIGHT / 2.0f, 100, 100));

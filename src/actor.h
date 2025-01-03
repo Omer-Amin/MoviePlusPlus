@@ -95,6 +95,7 @@ struct Actor
         return reversed;
     }
 
+	// TODO: this does not return the completion of the actor - only the min completion of the current actionIndex. ie this wont work for consecutive actions -- need to find a way to compute overall completeion
     float tick()
     {
     	bool changesMade = false;
