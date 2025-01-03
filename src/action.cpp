@@ -73,7 +73,7 @@ float Action::tick(Actor& actor)
             transform(actor, easing(completion));
         }
         completion += tickDelta;
-    } 
+    }
     else
     {
         completion = 1;

@@ -26,26 +26,16 @@ struct Scene
 
     float tick()
     {
-        bool changesMade = false;
-        bool finished = true;
-        float minCompletion = 1;
-        for (auto& actor : actors)
-        {
-            if (actionIndex >= actor.script.size()) continue;
-            finished = false;
+		float minCompletion = 1.0f;
+		for (auto& actor : actors)
+		{
+			float completion = actor.tick();
+			if (completion < minCompletion) minCompletion = completion;
+		}
 
-            for (auto& action : actor.script[actionIndex])
-            {
-                if (action.completion >= 1) continue;
-                float completion = action.tick(actor);
-                if (completion < minCompletion) minCompletion = completion;
-                changesMade = true;
-            }
-        }
-        afterTick(*this);
-        if (!changesMade) actionIndex++;
-        if (minCompletion == 1) onComplete(*this);
-        return minCompletion;
+		afterTick(*this);
+		if (minCompletion == 1) onComplete(*this);
+		return minCompletion;
     }
 
     Scene reverse()
